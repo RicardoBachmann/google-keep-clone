@@ -4,4 +4,4 @@ class App {
   }
 }
 
-App();
+new App();
