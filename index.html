@@ -11,24 +11,28 @@
     <main>
       <header>
         <img
+          class="header-logo"
           src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png"
         />
-        <h1>Keep</h1>
+        <h1 class="header-title">Keep</h1>
       </header>
-      <section>
-        <form autocomplete="off">
-          <input placeholder="Title" type="text" />
-          <input placeholder="Take a note..." type="text" />
-          <div>
-            <button type="submit">Submit</button>
-            <button type="button">Close</button>
+      <section id="form-container">
+        <form id="form" autocomplete="off">
+          <input id="note-title" placeholder="Title" type="text" />
+          <input id="note-text" placeholder="Take a note..." type="text" />
+          <div id="form-buttons">
+            <button id="submit-button" type="submit">Submit</button>
+            <button id="form-close-button" type="button">Close</button>
           </div>
         </form>
       </section>
-      <section></section>
-      <section>
-        <img src="https://icon.now.sh/lightbulb_outline" />
-        <p>Notes you add appear here</p>
+      <section id="notes"></section>
+      <section id="placeholder">
+        <img
+          id="placeholder-logo"
+          src="https://icon.now.sh/lightbulb_outline"
+        />
+        <p id="placeholder-text">Notes you add appear here</p>
       </section>
     </main>
     <script src="app.js"></script>
