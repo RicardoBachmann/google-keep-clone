@@ -1,23 +1,33 @@
 class App {
   constructor() {
-    this.$form = document.querySelector("#form")
+    this.$form = document.querySelector('#form');
+    this.$noteTitle = document.querySelector('#note-title');
+    this.$fromButtons = document.querySelector('#form-buttons');
 
-    this.handleFormClick();
+    this.addEventListener();
   }
 
   addEventListener() {
-    document.body.addEventListener("click", (event) => {
-      handleFormClick(event);
+    document.body.addEventListener('click', event => {
+      this.handleFormClick(event);
     });
 
-    handleFormClick(event){
-       const isFormClicked = this.$form.contains(event.target);
-        if (isFormClicked) {
-            // open form 
-        } else {
-            // close form 
-        }
+  }
+
+  handleFormClick(event) {
+    const isFormClicked = this.$form.contains(event.target); 
+    
+    if (isFormClicked) {
+      this.openForm();
+    } else {
+        // close form
+    };
+  }
+    openForm() {
+        this.$form.classList.add('form-open');
+        this.$noteTitle.style.display = 'block';
+        this.$formButtons.style.display = 'block';
     }
   }
-}
+
 new App();
