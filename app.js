@@ -20,6 +20,7 @@ class App {
       const hasNote = title || text;
       if (hasNote) {
         // add note
+        this.addNote({ title, text });
       }
     });
   }
@@ -44,6 +45,8 @@ class App {
     this.$noteTitle.style.display = "none";
     this.$formButtons.style.display = "none";
   }
+
+  addNote(note) {}
 }
 
 new App();
