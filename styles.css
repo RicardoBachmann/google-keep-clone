@@ -18,6 +18,13 @@ form {
   border-radius: 8px;
 }
 
+#form {
+  position: relative;
+  border: none;
+  margin: 1px;
+  border-radius: 8px;
+}
+
 #note-text {
   width: 100%;
   min-height: 43px;
@@ -46,8 +53,12 @@ form {
 }
 
 #form-buttons {
-  display: none;
   text-align: right;
+}
+
+#submit-button {
+  color: #fff;
+  background-color: #007bff;
 }
 
 #submit-button,
