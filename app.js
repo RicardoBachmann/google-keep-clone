@@ -4,9 +4,9 @@ class App {
 
     this.$placeholder = document.querySelector("#placeholder");
     this.$form = document.querySelector("#form");
+    this.$notes = document.querySelector("#notes");
     this.$noteTitle = document.querySelector("#note-title");
     this.$noteText = document.querySelector("#note-text");
-    this.$notes = document.querySelector("#notes");
     this.$formButtons = document.querySelector("#form-buttons");
 
     this.addEventListeners();
@@ -86,7 +86,7 @@ class App {
         </div>
      `
       )
-      .join(""); // delet all the commas between the note array outputs;
+      .join(""); // delet all the commas between the note array outputs
   }
 }
 
