@@ -2,10 +2,12 @@ class App {
   constructor() {
     this.notes = [];
 
+    this.$placeholder = document.querySelector("#placeholder");
     this.$form = document.querySelector("#form");
     this.$noteTitle = document.querySelector("#note-title");
     this.$noteText = document.querySelector("#note-text");
-    this.$fromButtons = document.querySelector("#form-buttons");
+    this.$notes = document.querySelector("#notes");
+    this.$formButtons = document.querySelector("#form-buttons");
 
     this.addEventListeners();
   }
@@ -18,7 +20,7 @@ class App {
     this.$form.addEventListener("submit", (event) => {
       event.preventDefault(); //no full page reload
       const title = this.$noteTitle.value;
-      const text = this.$noteText.vaule;
+      const text = this.$noteText.value;
       const hasNote = title || text;
       if (hasNote) {
         // add note
@@ -36,6 +38,7 @@ class App {
       this.closeForm();
     }
   }
+
   openForm() {
     this.$form.classList.add("form-open");
     this.$noteTitle.style.display = "block";
@@ -46,6 +49,8 @@ class App {
     this.$form.classList.remove("form-open");
     this.$noteTitle.style.display = "none";
     this.$formButtons.style.display = "none";
+    this.$noteTitle.value = "";
+    this.$noteText.value = "";
   }
 
   addNote(note) {
@@ -58,7 +63,30 @@ class App {
     };
     // previous notes, newNote add notes to the end of the array
     this.notes = [...this.notes, newNote];
-    console.log(this.notes);
+    this.displayNotes();
+    this.closeForm();
+  }
+
+  displayNotes() {
+    const hasNotes = this.notes.length > 0;
+    this.$placeholder.style.display = hasNotes ? "none" : "flex";
+
+    this.$notes.innerHTML = this.notes
+      .map(
+        (note) => `
+        <div style="background: ${note.color};" class="note">
+          <div class="${note.title && "note-title"}">${note.title}</div>
+          <div class="note-text">${note.text}</div>
+          <div class="toolbar-container">
+            <div class="toolbar">
+              <img class="toolbar-color" src="https://icon.now.sh/palette">
+              <img class="toolbar-delete" src="https://icon.now.sh/delete">
+            </div>
+          </div>
+        </div>
+     `
+      )
+      .join(""); // delet all the commas between the note array outputs;
   }
 }
 
