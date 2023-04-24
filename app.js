@@ -1,6 +1,8 @@
 class App {
   constructor() {
     this.notes = [];
+    this.title = "";
+    this.text = "";
 
     this.$placeholder = document.querySelector("#placeholder");
     this.$form = document.querySelector("#form");
@@ -18,6 +20,7 @@ class App {
     document.body.addEventListener("click", (event) => {
       this.handleFormClick(event);
       this.openModal(event);
+      this.selectNote(event);
     });
 
     this.$form.addEventListener("submit", (event) => {
@@ -85,6 +88,13 @@ class App {
     this.notes = [...this.notes, newNote];
     this.displayNotes();
     this.closeForm();
+  }
+
+  selectNote(event) {
+    const $selectedNote = event.target.closest(".note");
+    const [$noteTitle, $noteText] = $selectedNote.children; // .children gives a array of the elements
+    this.title = $noteTitle.innerText;
+    this.text = $noteText.innerText;
   }
 
   displayNotes() {
