@@ -5,7 +5,7 @@ class App {
     this.$form = document.querySelector("#form");
     this.$noteTitle = document.querySelector("#note-title");
     this.$noteText = document.querySelector("#note-text");
-    this.$fromButtons = document.querySelector("#form-buttons");
+    this.$formButtons = document.querySelector("#form-buttons");
 
     this.addEventListeners();
   }
@@ -16,9 +16,9 @@ class App {
     });
 
     this.$form.addEventListener("submit", (event) => {
-      event.preventDefault(); //no full page reload
+      event.preventDefault();
       const title = this.$noteTitle.value;
-      const text = this.$noteText.vaule;
+      const text = this.$noteText.value;
       const hasNote = title || text;
       if (hasNote) {
         // add note
@@ -36,6 +36,7 @@ class App {
       this.closeForm();
     }
   }
+
   openForm() {
     this.$form.classList.add("form-open");
     this.$noteTitle.style.display = "block";
