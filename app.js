@@ -6,6 +6,7 @@ class App {
     this.$noteTitle = document.querySelector("#note-title");
     this.$noteText = document.querySelector("#note-text");
     this.$formButtons = document.querySelector("#form-buttons");
+    this.$placeholder = document.querySelector("#placeholder");
 
     this.addEventListeners();
   }
@@ -16,7 +17,7 @@ class App {
     });
 
     this.$form.addEventListener("submit", (event) => {
-      event.preventDefault();
+      event.preventDefault(); //no full page reload
       const title = this.$noteTitle.value;
       const text = this.$noteText.value;
       const hasNote = title || text;
@@ -59,7 +60,12 @@ class App {
     };
     // previous notes, newNote add notes to the end of the array
     this.notes = [...this.notes, newNote];
-    console.log(this.notes);
+    this.displayNotes();
+  }
+
+  displayNotes() {
+    const hasNotes = this.notes.length > 0;
+    this.$placeholder.style.display = hasNotes ? "none" : "flex";
   }
 }
 
