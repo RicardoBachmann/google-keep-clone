@@ -102,6 +102,8 @@ class App {
     const noteCoords = event.target.getBoundingClientRect(); // gives specific infos about the coordinates where the hoving over is
     const horizontal = noteCoords.left + window.scrollX;
     const vertical = noteCoords.top + window.scrollY;
+    this.$colorTooltip.style.transform = `translate(${horizontal}px, ${vertical}px)`;
+    this.$colorTooltip.style.display = "flex";
   }
 
   addNote({ title, text }) {
